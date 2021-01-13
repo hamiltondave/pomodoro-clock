@@ -1,5 +1,8 @@
 <template>
-  <p>{{ minutes }}:{{ seconds }}</p>
+  <div>
+    <p>{{ minutes }}:{{ seconds }}</p>
+    <button @click="paused = !paused">{{ buttonText }}</button>
+  </div>
 </template>
 
 <script>
@@ -16,10 +19,15 @@ export default {
     return {
       elapsed: 0,
       interval: null,
+      paused: false,
     }
   },
 
   computed: {
+    buttonText() {
+      return this.paused ? 'Play' : 'Pause'
+    },
+
     minutes() {
       return Math.floor(this.remaining / 60)
     },
@@ -36,6 +44,14 @@ export default {
   },
 
   watch: {
+    paused(newValue) {
+      if (newValue) {
+        this.endTimer()
+      } else {
+        this.startTimer()
+      }
+    },
+
     remaining(newValue) {
       if (newValue === 0) {
         this.endTimer()
