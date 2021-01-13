@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h1>pomodoro</h1>
-    <Timer />
+    <Timer limit="25" />
   </div>
 </template>
 
