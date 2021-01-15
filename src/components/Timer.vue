@@ -1,13 +1,29 @@
 <template>
   <div>
     <p>{{ minutes }}:{{ seconds }}</p>
-    <button @click="paused = !paused">{{ buttonText }}</button>
+    <template v-if="paused">
+      <button aria-label="play" @click="paused = !paused">
+        <PlayIcon />
+      </button>
+    </template>
+    <template v-else>
+      <button aria-label="pause" @click="paused = !paused">
+        <PauseIcon />
+      </button>
+    </template>
   </div>
 </template>
 
 <script>
+import { PauseIcon, PlayIcon } from 'vue-feather-icons'
+
 export default {
   name: 'Timer',
+  components: {
+    PauseIcon,
+    PlayIcon,
+  },
+
   props: {
     limit: {
       type: Number,
@@ -19,7 +35,7 @@ export default {
     return {
       elapsed: 0,
       interval: null,
-      paused: false,
+      paused: true,
     }
   },
 
@@ -57,10 +73,6 @@ export default {
         this.endTimer()
       }
     }
-  },
-
-  mounted() {
-    this.startTimer()
   },
 
   methods: {
