@@ -60,6 +60,11 @@ export default {
   },
 
   watch: {
+    limit() {
+      this.paused = true
+      this.elapsed = 0
+    },
+
     paused(newValue) {
       if (newValue) {
         this.endTimer()
