@@ -2,20 +2,20 @@
   <div id="app">
     <main>
       <h1>pomodoro</h1>
-      <BreakOptions v-model.number="selectedTimer" />
+      <TimerOptions v-model.number="selectedTimer" />
       <Timer :limit="timeLimits[selectedTimer]" />
     </main>
   </div>
 </template>
 
 <script>
-import BreakOptions from './components/BreakOptions'
-import Timer from './components/Timer.vue'
+import TimerOptions from '@/components/TimerOptions'
+import Timer from '@/components/Timer'
 
 export default {
   name: 'App',
   components: {
-    BreakOptions,
+    TimerOptions,
     Timer,
   },
 
@@ -32,13 +32,10 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+@import '~@/styles/main.scss';
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

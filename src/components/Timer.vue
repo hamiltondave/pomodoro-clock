@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>{{ minutes }}:{{ seconds }}</p>
+    <p class="clock">{{ minutes }}:{{ seconds }}</p>
     <template v-if="paused">
       <button aria-label="play" @click="paused = !paused">
         <PlayIcon />
@@ -91,3 +91,9 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.clock {
+  font-size: 3rem;
+}
+</style>
