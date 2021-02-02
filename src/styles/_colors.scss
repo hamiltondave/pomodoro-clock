@@ -2,6 +2,9 @@ $green: hsl(149, 85%, 33%);
 
 $text: hsl(149, 13%, 12%);
 $field: hsl(30, 100%, 80%);
-$background: hsl(0, 0%, 94%);
+
+$bg-light: hsl(0, 0%, 94%);
+$bg-dark: #161616;
 
 $primary: $green;
+$secondary: $bg-light;
