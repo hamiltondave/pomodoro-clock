@@ -1,6 +1,6 @@
 <template>
-  <div id="app">
-    <video ref="videoRef" muted loop id="bg-video" />
+  <div id="app" :style="bgStyle">
+    <BaseVideo v-if="bgVideo" :src="bgVideo" class="bg-video" />
     <main id="content">
       <h1>pomodoro</h1>
       <TimerOptions v-model.number="selectedTimer" />
@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import BaseVideo from '@/components/BaseVideo'
 import Settings from '@/components/Settings'
 import TimerOptions from '@/components/TimerOptions'
 import Timer from '@/components/Timer'
@@ -18,6 +19,7 @@ import Timer from '@/components/Timer'
 export default {
   name: 'App',
   components: {
+    BaseVideo,
     Settings,
     TimerOptions,
     Timer,
@@ -25,6 +27,8 @@ export default {
 
   data() {
     return {
+      bgImg: null,
+      bgVideo: null,
       selectedTimer: 'pomodoro',
       timeLimits: {
         long: 10,
@@ -34,13 +38,25 @@ export default {
     }
   },
 
+  computed: {
+    bgStyle() {
+      return this.bgImg ? `background-image: url(${this.bgImg})` : null;
+    }
+  },
+
   methods: {
     setBackground(file) {
       const URL = window.URL
       const fileUrl = URL.createObjectURL(file)
-      console.log(fileUrl)
-      this.$refs.videoRef.src = fileUrl
-      this.$refs.videoRef.play()
+      const fileType = file.type.split('/')[0]
+
+      if (fileType === 'video') {
+        this.bgImg = null
+        this.bgVideo = fileUrl
+      } else if (fileType === 'image') {
+        this.bgVideo = null
+        this.bgImg = fileUrl
+      }
     },
   },
 }
@@ -50,7 +66,11 @@ export default {
 @import '~@/styles/main.scss';
 
 #app {
+  background-attachment: fixed;
   background-color: $bg-dark;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
   position: fixed;
   left: 0;
   top: 0;
@@ -70,7 +90,7 @@ export default {
   bottom: 0;
 }
 
-#bg-video {
+.bg-video {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);

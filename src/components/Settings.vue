@@ -5,7 +5,7 @@
       <input
         class="file__input"
         type="file"
-        accept="video/*"
+        accept="image/*, video/*"
         @change="updateBackground"
       />
     </label>
@@ -19,7 +19,6 @@ export default {
   methods: {
     updateBackground(event) {
       const fileList = event.target.files
-      console.log(fileList)
       if (fileList.length === 1) {
         this.$emit('update-background', fileList[0])
       }
