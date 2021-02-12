@@ -37,9 +37,9 @@ export default {
 
 .button {
   display: inline-block;
-  background-color: $bg-light;
+  background-color: $secondary;
   border-radius: 4px;
-  color: $bg-dark;
+  color: $grey-dark;
   padding: 1rem 1.5rem;
   cursor: pointer;
 }

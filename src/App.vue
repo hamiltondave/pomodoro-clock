@@ -2,9 +2,8 @@
   <div id="app" :style="bgStyle">
     <BaseVideo v-if="bgVideo" :src="bgVideo" class="bg-video" />
     <main id="content">
-      <h1>pomodoro</h1>
+      <Timer id="timer" :limit="timeLimits[selectedTimer]" />
       <TimerOptions v-model.number="selectedTimer" />
-      <Timer :limit="timeLimits[selectedTimer]" />
       <Settings @update-background="setBackground" />
     </main>
   </div>
@@ -67,7 +66,7 @@ export default {
 
 #app {
   background-attachment: fixed;
-  background-color: $bg-dark;
+  background-color: $background;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -81,7 +80,7 @@ export default {
 #content {
   position: absolute;
   text-align: center;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.7);
   color: #f1f1f1;
   max-width: 32rem;
   padding: 1rem;
@@ -96,5 +95,9 @@ export default {
   transform: translateX(-50%);
   bottom: 0;
   height: 100%;
+}
+
+#timer {
+  margin-bottom: 1rem;
 }
 </style>

@@ -1,13 +1,21 @@
 <template>
   <div>
-    <p class="clock">{{ minutes }}:{{ seconds }}</p>
+    <h1 class="clock">{{ minutes }}:{{ seconds }}</h1>
     <template v-if="paused">
-      <button aria-label="play" @click="paused = !paused">
+      <button
+        aria-label="play"
+        class="timer__button timer__button--play"
+        @click="paused = !paused"
+      >
         <PlayIcon />
       </button>
     </template>
     <template v-else>
-      <button aria-label="pause" @click="paused = !paused">
+      <button
+        aria-label="pause"
+        class="timer__button timer__button--pause"
+        @click="paused = !paused"
+      >
         <PauseIcon />
       </button>
     </template>
@@ -92,8 +100,32 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@import '~@/styles/_colors.scss';
+
 .clock {
   font-size: 3rem;
+}
+
+.timer {
+  &__button {
+    border-radius: 50%;
+    border: none;
+    height: 48px;
+    width: 48px;
+    background-color: $primary;
+    color: $text;
+
+    &--play {
+      padding: 4px 0px 2px 2px;
+    }
+
+    &--pause {
+      padding: 4px 0px 2px 1px;
+    }
+
+    &:hover {
+    }
+  }
 }
 </style>

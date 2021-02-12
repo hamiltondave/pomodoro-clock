@@ -1,10 +1,16 @@
+$black: hsl(0, 0%, 2%);
+$white: hsl(0, 0%, 96%);
+
+$grey-dark: hsl(0, 0%, 10%);
+$grey: hsl(0, 0%, 48%);
+$grey-light: hsl(0, 0%, 70%);
+
 $green: hsl(149, 85%, 33%);
 
-$text: hsl(149, 13%, 12%);
-$field: hsl(30, 100%, 80%);
-
-$bg-light: hsl(0, 0%, 94%);
-$bg-dark: #161616;
-
 $primary: $green;
-$secondary: $bg-light;
+$secondary: $grey-light;
+
+$text: $white;
+$background: $grey-dark;
+
+$border: $grey;
