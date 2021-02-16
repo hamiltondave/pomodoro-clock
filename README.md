@@ -1,4 +1,5 @@
-# pomotimer
+# Pomodoro Clock
+A simple timer app for the pomodoro technique
 
 ## Project setup
 ```
@@ -19,6 +20,3 @@ npm run build
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
