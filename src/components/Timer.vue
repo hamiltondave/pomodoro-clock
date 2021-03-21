@@ -4,7 +4,7 @@
     <button
       v-if="paused"
       aria-label="play"
-      class="timer__button timer__button--play"
+      class="button timer__button timer__button--play"
       @click="paused = !paused"
     >
       <PlayIcon />
@@ -12,13 +12,13 @@
     <button
       v-else
       aria-label="pause"
-      class="timer__button timer__button--pause"
+      class="button timer__button timer__button--pause"
       @click="paused = !paused"
     >
       <PauseIcon />
     </button>
     <button
-      class="timer__reset"
+      class="button"
       @click="resetTimer"
     >
       Reset
@@ -118,11 +118,9 @@ export default {
 .timer {
   &__button {
     border-radius: 50%;
-    border: none;
     height: 48px;
     width: 48px;
     background-color: $primary;
-    color: $text;
 
     &--play {
       padding: 4px 0px 2px 2px;
@@ -130,9 +128,6 @@ export default {
 
     &--pause {
       padding: 4px 0px 2px 1px;
-    }
-
-    &:hover {
     }
   }
 }

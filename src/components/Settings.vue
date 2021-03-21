@@ -35,15 +35,6 @@ export default {
   margin-top: 1rem;
 }
 
-.button {
-  display: inline-block;
-  background-color: $secondary;
-  border-radius: 4px;
-  color: $grey-dark;
-  padding: 1rem 1.5rem;
-  cursor: pointer;
-}
-
 .file {
   position: relative;
 

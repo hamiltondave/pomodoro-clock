@@ -6,3 +6,21 @@ html {
   -moz-osx-font-smoothing: grayscale;
   color: $text;
 }
+
+.button {
+  display: inline-block;
+  background-color: $grey-darker;
+  border: 1px solid $grey-light;
+  border-radius: 4px;
+  color: $white;
+  padding: .5rem 1rem;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid $blue-light;
+  }
+
+  &:focus {
+    border: 1px solid $blue;
+  }
+}

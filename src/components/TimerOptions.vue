@@ -1,46 +1,44 @@
 <template>
   <fieldset class="fieldset">
-    <label :class="['timer', { 'timer--selected': selectedOption === 'pomodoro' }]">
+    <label
+      v-for="option in options"
+      :key="option.value"
+      :class="['button', 'timer', { 'timer--selected': selectedOption === option.value }]"
+    >
       <input
         name="options"
         type="radio"
-        value="pomodoro"
+        :value="option.value"
         class="timer__input"
         v-model="selectedOption"
         @input="$emit('input', $event.target.value)"
       />
-      Pomodoro
-    </label>
-    <label :class="['timer', { 'timer--selected': selectedOption === 'short' }]">
-      <input
-        name="options"
-        type="radio"
-        value="short"
-        class="timer__input"
-        v-model="selectedOption"
-        @input="$emit('input', $event.target.value)"
-      />
-      Short Break
-    </label>
-    <label :class="['timer', { 'timer--selected': selectedOption === 'long' }]">
-      <input
-        name="options"
-        type="radio"
-        value="long"
-        class="timer__input"
-        v-model="selectedOption"
-        @input="$emit('input', $event.target.value)"
-      />
-      Long Break
+      {{ option.label }}
     </label>
   </fieldset>
 </template>
 
 <script>
+const options = [
+  {
+    label: 'Pomodoro',
+    value: 'pomodoro',
+  },
+  {
+    label: 'Short Break',
+    value: 'short',
+  },
+  {
+    label: 'Long Break',
+    value: 'long',
+  },
+]
+
 export default {
   name: 'TimerOptions',
   data() {
     return {
+      options: options,
       selectedOption: 'pomodoro',
     }
   },
@@ -51,7 +49,10 @@ export default {
 @import '~@/styles/_colors.scss';
 
 .fieldset {
-  border: none;
+  background-color: $grey-darker;
+  padding: 0;
+  border: 1px solid $grey-light;
+  border-radius: 4px;
   display: flex;
   justify-content: center;
   margin: auto;
@@ -59,12 +60,11 @@ export default {
 }
 
 .timer {
-  display: block;
-  padding: 1rem 1.5rem;
-  border-radius: 8px;
+  border: 1px solid transparent;
+  margin-right: 1px;
 
   &--selected {
-    background-color: $green;
+    background-color: $grey-dark;
   }
 
   &__input {
