@@ -1,24 +1,28 @@
 <template>
   <div>
     <h1 class="clock">{{ minutes }}:{{ seconds }}</h1>
-    <template v-if="paused">
-      <button
-        aria-label="play"
-        class="timer__button timer__button--play"
-        @click="paused = !paused"
-      >
-        <PlayIcon />
-      </button>
-    </template>
-    <template v-else>
-      <button
-        aria-label="pause"
-        class="timer__button timer__button--pause"
-        @click="paused = !paused"
-      >
-        <PauseIcon />
-      </button>
-    </template>
+    <button
+      v-if="paused"
+      aria-label="play"
+      class="timer__button timer__button--play"
+      @click="paused = !paused"
+    >
+      <PlayIcon />
+    </button>
+    <button
+      v-else
+      aria-label="pause"
+      class="timer__button timer__button--pause"
+      @click="paused = !paused"
+    >
+      <PauseIcon />
+    </button>
+    <button
+      class="timer__reset"
+      @click="resetTimer"
+    >
+      Reset
+    </button>
   </div>
 </template>
 
@@ -69,8 +73,7 @@ export default {
 
   watch: {
     limit() {
-      this.paused = true
-      this.elapsed = 0
+      this.resetTimer()
     },
 
     paused(newValue) {
@@ -95,6 +98,11 @@ export default {
 
     startTimer() {
       this.interval = setInterval(() => (this.elapsed += 1), 1000)
+    },
+
+    resetTimer() {
+      this.paused = true
+      this.elapsed = 0
     },
   },
 }
