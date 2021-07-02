@@ -18,6 +18,7 @@
       <PauseIcon />
     </button>
     <button
+      data-test-id="reset-button"
       class="button"
       @click="resetTimer"
     >
@@ -52,10 +53,6 @@ export default {
   },
 
   computed: {
-    buttonText() {
-      return this.paused ? 'Play' : 'Pause'
-    },
-
     minutes() {
       return Math.floor(this.remaining / 60)
     },
