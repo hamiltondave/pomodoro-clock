@@ -1,40 +1,42 @@
 <template>
-  <div>
+  <div class="timer">
     <h1 class="clock">{{ minutes }}:{{ seconds }}</h1>
     <button
       v-if="paused"
       aria-label="play"
-      class="button timer__button timer__button--play"
+      class="timer__button timer__button--play"
       @click="paused = !paused"
     >
-      <PlayIcon />
+      <PlayIcon size="48" />
     </button>
     <button
       v-else
       aria-label="pause"
-      class="button timer__button timer__button--pause"
+      class="timer__button timer__button--pause"
       @click="paused = !paused"
     >
-      <PauseIcon />
+      <PauseIcon size="48" />
     </button>
     <button
       data-test-id="reset-button"
-      class="button"
+      aria-label="reset"
+      class="timer__button timer__button--reset"
       @click="resetTimer"
     >
-      Reset
+      <RotateCcwIcon size="24" />
     </button>
   </div>
 </template>
 
 <script>
-import { PauseIcon, PlayIcon } from 'vue-feather-icons'
+import { PauseIcon, PlayIcon, RotateCcwIcon } from 'vue-feather-icons'
 
 export default {
   name: 'Timer',
   components: {
     PauseIcon,
     PlayIcon,
+    RotateCcwIcon
   },
 
   props: {
@@ -110,22 +112,21 @@ export default {
 
 .clock {
   font-size: 3rem;
+  margin: 1rem 0 .5rem 0;
 }
 
 .timer {
+  display: flex;
+  flex-direction: column;
+
   &__button {
-    border-radius: 50%;
-    height: 48px;
-    width: 48px;
-    background-color: $primary;
+    margin: .5rem 0;
+    border: none;
 
-    &--play {
-      padding: 4px 0px 2px 2px;
-    }
+    background-color: transparent;
+    cursor: pointer;
 
-    &--pause {
-      padding: 4px 0px 2px 1px;
-    }
+    color: $white;
   }
 }
 </style>

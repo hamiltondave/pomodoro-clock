@@ -49,7 +49,7 @@ export default {
 @import '~@/styles/_colors.scss';
 
 .fieldset {
-  background-color: $grey-darker;
+  background-color: transparent;
   padding: 0;
   border: 1px solid $grey-light;
   border-radius: 4px;
@@ -62,6 +62,8 @@ export default {
 .timer {
   border: 1px solid transparent;
   margin-right: 1px;
+  padding: .8rem;
+  background-color: transparent;
 
   &--selected {
     background-color: $grey-dark;

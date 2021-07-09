@@ -2,8 +2,8 @@
   <div id="app" :style="bgStyle">
     <BaseVideo v-if="bgVideo" :src="bgVideo" class="bg-video" />
     <main id="content">
-      <Timer id="timer" :limit="timeLimits[selectedTimer]" />
       <TimerOptions v-model.number="selectedTimer" />
+      <Timer :limit="timeLimits[selectedTimer]" />
       <Settings @update-background="setBackground" />
     </main>
   </div>
@@ -95,9 +95,5 @@ export default {
   transform: translateX(-50%);
   bottom: 0;
   height: 100%;
-}
-
-#timer {
-  margin-bottom: 1rem;
 }
 </style>
