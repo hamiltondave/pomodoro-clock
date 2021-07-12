@@ -6,5 +6,5 @@ test('mounts app', () => {
   require('@/main')
 
   expect(document.getElementById('app')).toBeTruthy();
-  expect(document.getElementById('content')).toBeTruthy();
+  expect(document.querySelector('.menu')).toBeTruthy();
 });

@@ -1,5 +1,16 @@
 <template>
   <form class="settings">
+    <label>
+      Menu Placement
+      <select v-model="placement" @change="updatePlacement">
+        <option value="bottom-left">Bottom Left</option>
+        <option value="bottom-center">Bottom Center</option>
+        <option value="bottom-right">Bottom Right</option>
+        <option value="top-left">Top Left</option>
+        <option value="top-center">Top Center</option>
+        <option value="top-right">Top Right</option>
+      </select>
+    </label>
     <label class="button file">
       Set Background
       <input
@@ -16,13 +27,23 @@
 export default {
   name: 'Settings',
 
+  data() {
+    return {
+      placement: 'bottom-center',
+    }
+  },
+
   methods: {
     updateBackground(event) {
       const fileList = event.target.files
       if (fileList.length === 1) {
         this.$emit('update-background', fileList[0])
       }
-    }
+    },
+
+    updatePlacement(event) {
+      this.$emit('update-placement', event.target.value)
+    },
   }
 }
 </script>

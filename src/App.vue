@@ -1,10 +1,13 @@
 <template>
   <div id="app" :style="bgStyle">
     <BaseVideo v-if="bgVideo" :src="bgVideo" class="bg-video" />
-    <main id="content">
+    <main :class="['menu', menuPlacement]">
       <TimerOptions v-model.number="selectedTimer" />
       <Timer :limit="timeLimits[selectedTimer]" />
-      <Settings @update-background="setBackground" />
+      <Settings
+        @update-background="setBackground"
+        @update-placement="setPlacement"
+      />
     </main>
   </div>
 </template>
@@ -28,6 +31,7 @@ export default {
     return {
       bgImg: null,
       bgVideo: null,
+      menuPlacement: 'menu--bottom-center',
       selectedTimer: 'pomodoro',
       timeLimits: {
         long: 10,
@@ -40,7 +44,7 @@ export default {
   computed: {
     bgStyle() {
       return this.bgImg ? `background-image: url(${this.bgImg})` : null;
-    }
+    },
   },
 
   methods: {
@@ -56,6 +60,10 @@ export default {
         this.bgVideo = null
         this.bgImg = fileUrl
       }
+    },
+
+    setPlacement(placement) {
+      this.menuPlacement = `menu--${placement}`
     },
   },
 }
@@ -77,16 +85,55 @@ export default {
   height: 100vh;
 }
 
-#content {
+.menu {
   position: absolute;
   text-align: center;
   background: rgba(0, 0, 0, 0.7);
   color: #f1f1f1;
   max-width: 32rem;
   padding: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 0;
+
+  &--bottom-left {
+    left: 0;
+    bottom: 0;
+    right: none;
+    transform: none;
+  }
+
+  &--bottom-center {
+    left: 50%;
+    bottom: 0;
+    right: none;
+    transform: translateX(-50%);
+  }
+
+  &--bottom-right {
+    left: none;
+    bottom: 0;
+    right: 0;
+    transform: none;
+  }
+
+  &--top-left {
+    left: 0;
+    bottom: none;
+    right: none;
+    transform: none;
+  }
+
+  &--top-center {
+    left: 50%;
+    bottom: none;
+    right: none;
+    transform: translateX(-50%);
+  }
+
+  &--top-right {
+    left: none;
+    bottom: none;
+    right: 0;
+    transform: none;
+  }
 }
 
 .bg-video {

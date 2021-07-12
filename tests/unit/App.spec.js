@@ -42,3 +42,9 @@ test('handles unexpected file type for background', () => {
   wrapper.vm.setBackground(file)
   expect(wrapper.vm.bgStyle).toBe(null)
 })
+
+test('sets styling for menu placement', () => {
+  const wrapper = mount(App)
+  wrapper.vm.setPlacement('bottom-right')
+  expect(wrapper.find('.menu--bottom-right')).toBeTruthy()
+})
