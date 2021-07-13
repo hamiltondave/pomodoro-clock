@@ -1,30 +1,34 @@
 <template>
   <div class="timer">
     <h1 class="clock">{{ minutes }}:{{ seconds }}</h1>
-    <button
-      v-if="paused"
-      aria-label="play"
-      class="timer__button timer__button--play"
-      @click="paused = !paused"
-    >
-      <PlayIcon size="48" />
-    </button>
-    <button
-      v-else
-      aria-label="pause"
-      class="timer__button timer__button--pause"
-      @click="paused = !paused"
-    >
-      <PauseIcon size="48" />
-    </button>
-    <button
-      data-test-id="reset-button"
-      aria-label="reset"
-      class="timer__button timer__button--reset"
-      @click="resetTimer"
-    >
-      <RotateCcwIcon size="24" />
-    </button>
+    <div>
+      <button
+        v-if="paused"
+        aria-label="play"
+        class="timer__button timer__button--play"
+        @click="paused = !paused"
+      >
+        <PlayIcon size="48" />
+      </button>
+      <button
+        v-else
+        aria-label="pause"
+        class="timer__button timer__button--pause"
+        @click="paused = !paused"
+      >
+        <PauseIcon size="48" />
+      </button>
+    </div>
+    <div>
+      <button
+        data-test-id="reset-button"
+        aria-label="reset"
+        class="timer__button timer__button--reset"
+        @click="resetTimer"
+      >
+        <RotateCcwIcon size="24" />
+      </button>
+    </div>
   </div>
 </template>
 
@@ -116,9 +120,6 @@ export default {
 }
 
 .timer {
-  display: flex;
-  flex-direction: column;
-
   &__button {
     margin: .5rem 0;
     border: none;
