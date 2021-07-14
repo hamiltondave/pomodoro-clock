@@ -2,12 +2,22 @@
   <div id="app" :style="bgStyle">
     <BaseVideo v-if="bgVideo" :src="bgVideo" class="bg-video" />
     <main :class="['menu', menuPlacement]">
-      <TimerOptions v-model.number="selectedTimer" />
-      <Timer :limit="timeLimits[selectedTimer]" />
       <Settings
+        v-if="showSettings"
         @update-background="setBackground"
         @update-placement="setPlacement"
       />
+      <template v-else>
+        <TimerOptions v-model.number="selectedTimer" />
+        <Timer :limit="timeLimits[selectedTimer]" />
+      </template>
+      <button
+        data-test-id="settings-button"
+        class="button--text"
+        @click="showSettings = !showSettings"
+      >
+        {{ showSettings ? 'Back' : 'Settings' }}
+      </button>
     </main>
   </div>
 </template>
@@ -33,6 +43,7 @@ export default {
       bgVideo: null,
       menuPlacement: 'menu--bottom-center',
       selectedTimer: 'pomodoro',
+      showSettings: false,
       timeLimits: {
         long: 10,
         pomodoro: 25,

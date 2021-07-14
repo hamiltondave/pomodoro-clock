@@ -1,6 +1,6 @@
 <template>
   <form class="settings">
-    <label>
+    <label class="field">
       Menu Placement
       <select v-model="placement" @change="updatePlacement">
         <option value="bottom-left">Bottom Left</option>
@@ -11,7 +11,7 @@
         <option value="top-right">Top Right</option>
       </select>
     </label>
-    <label class="button file">
+    <label class="button file field">
       Set Background
       <input
         class="file__input"
@@ -54,6 +54,11 @@ export default {
 .settings {
   display: block;
   margin-top: 1rem;
+}
+
+.field {
+  display: block;
+  margin-bottom: 1rem;
 }
 
 .file {

@@ -1,5 +1,7 @@
 import { mount } from '@vue/test-utils'
 import App from '@/App.vue'
+import Settings from '@/components/Settings.vue'
+import Timer from '@/components/Timer.vue'
 
 test('renders app', () => {
   const wrapper = mount(App)
@@ -43,8 +45,19 @@ test('handles unexpected file type for background', () => {
   expect(wrapper.vm.bgStyle).toBe(null)
 })
 
-test('sets styling for menu placement', () => {
+test('sets styling for menu placement', async () => {
   const wrapper = mount(App)
-  wrapper.vm.setPlacement('bottom-right')
-  expect(wrapper.find('.menu--bottom-right')).toBeTruthy()
+  await wrapper.vm.setPlacement('bottom-right')
+  expect(wrapper.find('.menu--bottom-right').exists()).toBe(true)
+})
+
+test('shows settings menu if button is clicked', async () => {
+  const wrapper = mount(App)
+  expect(wrapper.findComponent(Settings).exists()).toBe(false)
+  expect(wrapper.findComponent(Timer).exists()).toBe(true)
+
+  const settingsButton = wrapper.find('[data-test-id="settings-button"]')
+  await settingsButton.trigger('click')
+  expect(wrapper.findComponent(Settings).exists()).toBe(true)
+  expect(wrapper.findComponent(Timer).exists()).toBe(false)
 })
