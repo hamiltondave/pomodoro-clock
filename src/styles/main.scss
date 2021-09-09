@@ -1,46 +1,56 @@
-@import './_variables.scss';
+@import '~bulma/sass/utilities/_all';
+// @import './_variables.scss';
 
-html {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: $text;
-}
+// html {
+//   font-family: Avenir, Helvetica, Arial, sans-serif;
+//   -webkit-font-smoothing: antialiased;
+//   -moz-osx-font-smoothing: grayscale;
+//   color: $text;
+// }
 
-.button {
-  display: inline-block;
-  background-color: $grey-darker;
-  border: 1px solid $grey-light;
-  border-radius: 4px;
+// .button {
+//   display: inline-block;
+//   background-color: $grey-darker;
+//   border: 1px solid $grey-light;
+//   border-radius: 4px;
 
-  font-size: 1rem;
-  color: $white;
-  padding: .5rem 1rem;
-  cursor: pointer;
+//   font-size: 1rem;
+//   color: $white;
+//   padding: .5rem 1rem;
+//   cursor: pointer;
 
-  &:hover {
-    border: 1px solid $blue-light;
-  }
+//   &:hover {
+//     border: 1px solid $blue-light;
+//   }
 
-  &:focus {
-    border: 1px solid $blue;
-  }
+//   &:focus {
+//     border: 1px solid $blue;
+//   }
 
-  &--text {
-    background-color: transparent;
-    border: none;
+//   &--text {
+//     background-color: transparent;
+//     border: none;
 
-    color: $white;
-    text-decoration: underline;
+//     color: $white;
+//     text-decoration: underline;
 
-    cursor: pointer;
+//     cursor: pointer;
 
-    &:hover {
-      background-color: $grey-darker;
-    }
+//     &:hover {
+//       background-color: $grey-darker;
+//     }
 
-    &:focus {
-      background-color: $grey-dark;
-    }
-  }
-}
+//     &:focus {
+//       background-color: $grey-dark;
+//     }
+//   }
+// }
+
+// Colors
+$text: $text-invert;
+$text-strong: findInvertColor($text-strong);
+$background: $grey-darker;
+
+// Import Bulma and Buefy styles
+@import "~bulma";
+@import "~buefy/src/scss/buefy";

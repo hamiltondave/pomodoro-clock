@@ -1,21 +1,15 @@
 <template>
-  <fieldset class="fieldset">
-    <label
+  <BField>
+    <BRadioButton
       v-for="option in options"
       :key="option.value"
-      :class="['button', 'timer', { 'timer--selected': selectedOption === option.value }]"
+      v-model="selectedOption"
+      :native-value="option.value"
+      type="is-black"
     >
-      <input
-        name="options"
-        type="radio"
-        :value="option.value"
-        class="timer__input"
-        v-model="selectedOption"
-        @input="$emit('input', $event.target.value)"
-      />
       {{ option.label }}
-    </label>
-  </fieldset>
+    </BRadioButton>
+  </BField>
 </template>
 
 <script>
@@ -48,16 +42,16 @@ export default {
 <style scoped lang="scss">
 @import '~@/styles/_colors.scss';
 
-.fieldset {
-  background-color: transparent;
-  padding: 0;
-  border: 1px solid $grey-light;
-  border-radius: 4px;
-  display: flex;
-  justify-content: center;
-  margin: auto;
-  width: max-content;
-}
+/* .fieldset { */
+/*   background-color: transparent; */
+/*   padding: 0; */
+/*   border: 1px solid $grey-light; */
+/*   border-radius: 4px; */
+/*   display: flex; */
+/*   justify-content: center; */
+/*   margin: auto; */
+/*   width: max-content; */
+/* } */
 
 .timer {
   border: 1px solid transparent;

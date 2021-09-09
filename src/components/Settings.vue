@@ -1,25 +1,25 @@
 <template>
   <form class="settings">
-    <label class="field">
-      Menu Placement
-      <select v-model="placement" @change="updatePlacement">
-        <option value="bottom-left">Bottom Left</option>
-        <option value="bottom-center">Bottom Center</option>
-        <option value="bottom-right">Bottom Right</option>
-        <option value="top-left">Top Left</option>
-        <option value="top-center">Top Center</option>
-        <option value="top-right">Top Right</option>
-      </select>
-    </label>
-    <label class="button file field">
-      Set Background
-      <input
-        class="file__input"
-        type="file"
+    <BField label="Menu Placement">
+      <BSelect v-model="placement">
+        <option
+          v-for="option in placementOptions"
+          :key="option.value"
+          :value="option.value"
+        >
+          {{ option.label }}
+        </option>
+      </BSelect>
+    </BField>
+    <BField class="file">
+      <BUpload
+        v-model="file"
         accept="image/*, video/*"
-        @change="updateBackground"
-      />
-    </label>
+        class="file-label"
+      >
+        Set Background
+      </BUpload>
+    </BField>
   </form>
 </template>
 
@@ -29,51 +29,74 @@ export default {
 
   data() {
     return {
+      file: null,
       placement: 'bottom-center',
+      placementOptions: [
+        {
+          value: "bottom-left",
+          label: "Bottom Left",
+        },
+        {
+          value: "bottom-center",
+          label: "Bottom Center",
+        },
+        {
+          value: "bottom-right",
+          label: "Bottom Right",
+        },
+        {
+          value: "top-left",
+          label: "Top Left",
+        },
+        {
+          value: "top-center",
+          label: "Top Center",
+        },
+        {
+          value: "top-right",
+          label: "Top Right",
+        },
+      ],
     }
   },
 
-  methods: {
-    updateBackground(event) {
-      const fileList = event.target.files
-      if (fileList.length === 1) {
-        this.$emit('update-background', fileList[0])
-      }
+  watch: {
+    file: function(newFile) {
+      this.$emit('update-background', newFile)
     },
 
-    updatePlacement(event) {
-      this.$emit('update-placement', event.target.value)
+    placement: function(newPlacement) {
+      this.$emit('update-placement', newPlacement)
     },
-  }
+  },
 }
 </script>
 
 <style scoped lang="scss">
-@import '~@/styles/_variables.scss';
-
 .settings {
   display: block;
   margin-top: 1rem;
+  text-align: left;
 }
 
-.field {
-  display: block;
-  margin-bottom: 1rem;
-}
+/* .field { */
+/*   display: block; */
+/*   margin-bottom: 1rem; */
+/* } */
 
-.file {
-  position: relative;
+/* .file { */
+/*   position: relative; */
 
-  &__input {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    outline: none;
-    cursor: pointer;
-    z-index: -1;
-  }
-}
+/*   &__input { */
+/*     position: absolute; */
+/*     top: 0; */
+/*     left: 0; */
+/*     width: 100%; */
+/*     height: 100%; */
+/*     opacity: 0; */
+/*     outline: none; */
+/*     cursor: pointer; */
+/*     z-index: -1; */
+/*   } */
+/* } */
 </style>

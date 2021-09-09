@@ -11,13 +11,12 @@
         <TimerOptions v-model.number="selectedTimer" />
         <Timer :limit="timeLimits[selectedTimer]" />
       </template>
-      <button
+      <BButton
         data-test-id="settings-button"
-        class="button--text"
         @click="showSettings = !showSettings"
       >
         {{ showSettings ? 'Back' : 'Settings' }}
-      </button>
+      </BButton>
     </main>
   </div>
 </template>
@@ -100,7 +99,7 @@ export default {
   position: absolute;
   text-align: center;
   background: rgba(0, 0, 0, 0.7);
-  color: #f1f1f1;
+  /* color: #f1f1f1; */
   max-width: 32rem;
   padding: 1rem;
 

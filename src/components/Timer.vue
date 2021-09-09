@@ -1,6 +1,6 @@
 <template>
   <div class="timer">
-    <h1 class="clock">{{ minutes }}:{{ seconds }}</h1>
+    <h1 class="title">{{ minutes }}:{{ seconds }}</h1>
     <div>
       <button
         v-if="paused"
