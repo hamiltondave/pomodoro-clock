@@ -6,17 +6,11 @@ test('renders file input for background', () => {
   expect(wrapper.find('input[type="file"]').exists()).toBe(true)
 });
 
-test('emits update-background event on input change', () => {
+test('emits update-background event on input change', async () => {
   const wrapper = mount(Settings)
-  wrapper.vm.updateBackground({target: {files: [{}]}})
+  await wrapper.setData({ file: {} })
   expect(wrapper.emitted()['update-background']).toBeTruthy()
   expect(wrapper.emitted()['update-background'].length).toBe(1)
-})
-
-test('does not emit update-background event for empty file list', () => {
-  const wrapper = mount(Settings)
-  wrapper.vm.updateBackground({target: {files: []}})
-  expect(wrapper.emitted()['update-background']).not.toBeTruthy()
 })
 
 test('renders select for menu placement', () => {
@@ -24,8 +18,8 @@ test('renders select for menu placement', () => {
   expect(wrapper.find('select').exists()).toBe(true)
 })
 
-test('emits update-placement event on select change', () => {
+test('emits update-placement event on select change', async () => {
   const wrapper = mount(Settings)
-  wrapper.vm.updatePlacement({target: {value: 'bottom-right'}})
+  await wrapper.setData({ placement: 'bottom-right' })
   expect(wrapper.emitted()['update-placement']).toBeTruthy()
 })
