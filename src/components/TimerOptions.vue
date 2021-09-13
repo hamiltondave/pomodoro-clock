@@ -36,35 +36,11 @@ export default {
       selectedOption: 'pomodoro',
     }
   },
+
+  watch: {
+    selectedOption(value) {
+      this.$emit('input', value)
+    },
+  },
 }
 </script>
-
-<style scoped lang="scss">
-@import '~@/styles/_colors.scss';
-
-/* .fieldset { */
-/*   background-color: transparent; */
-/*   padding: 0; */
-/*   border: 1px solid $grey-light; */
-/*   border-radius: 4px; */
-/*   display: flex; */
-/*   justify-content: center; */
-/*   margin: auto; */
-/*   width: max-content; */
-/* } */
-
-.timer {
-  border: 1px solid transparent;
-  margin-right: 1px;
-  padding: .8rem;
-  background-color: transparent;
-
-  &--selected {
-    background-color: $grey-dark;
-  }
-
-  &__input {
-    display: none;
-  }
-}
-</style>
