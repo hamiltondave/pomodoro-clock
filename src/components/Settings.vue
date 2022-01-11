@@ -2,7 +2,7 @@
   <form class="settings">
     <label class="field">
       Menu Placement
-      <select v-model="placement" @change="updatePlacement">
+      <select :value="placement" @change="updatePlacement">
         <option value="bottom-left">Bottom Left</option>
         <option value="bottom-center">Bottom Center</option>
         <option value="bottom-right">Bottom Right</option>
@@ -26,11 +26,11 @@
 <script>
 export default {
   name: 'Settings',
-
-  data() {
-    return {
-      placement: 'bottom-center',
-    }
+  props: {
+    placement: {
+      type: String,
+      required: true,
+    },
   },
 
   methods: {

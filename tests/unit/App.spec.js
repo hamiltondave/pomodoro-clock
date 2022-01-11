@@ -47,7 +47,9 @@ test('handles unexpected file type for background', () => {
 
 test('sets styling for menu placement', async () => {
   const wrapper = mount(App)
-  await wrapper.vm.setPlacement('bottom-right')
+  const settingsButton = wrapper.find('[data-test-id="settings-button"]')
+  await settingsButton.trigger('click')
+  await wrapper.findComponent(Settings).vm.$emit('update-placement', 'bottom-right')
   expect(wrapper.find('.menu--bottom-right').exists()).toBe(true)
 })
 

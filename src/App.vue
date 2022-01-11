@@ -1,11 +1,12 @@
 <template>
   <div id="app" :style="bgStyle">
     <BaseVideo v-if="bgVideo" :src="bgVideo" class="bg-video" />
-    <main :class="['menu', menuPlacement]">
+    <main :class="['menu', `menu--${menuPlacement}`]">
       <Settings
         v-if="showSettings"
+        :placement="menuPlacement"
         @update-background="setBackground"
-        @update-placement="setPlacement"
+        @update-placement="setMenuPlacement"
       />
       <template v-else>
         <TimerOptions v-model.number="selectedTimer" />
@@ -41,7 +42,7 @@ export default {
     return {
       bgImg: null,
       bgVideo: null,
-      menuPlacement: 'menu--bottom-center',
+      menuPlacement: 'bottom-center',
       selectedTimer: 'pomodoro',
       showSettings: false,
       timeLimits: {
@@ -73,8 +74,8 @@ export default {
       }
     },
 
-    setPlacement(placement) {
-      this.menuPlacement = `menu--${placement}`
+    setMenuPlacement(value) {
+      this.menuPlacement = value
     },
   },
 }
