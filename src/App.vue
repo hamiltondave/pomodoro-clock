@@ -98,7 +98,7 @@ export default {
 }
 
 .menu {
-  position: absolute;
+  position: fixed;
   text-align: center;
   background: rgba(0, 0, 0, 0.7);
   color: #f1f1f1;
