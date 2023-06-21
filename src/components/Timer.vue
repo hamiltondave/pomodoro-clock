@@ -8,7 +8,7 @@
         class="timer__button timer__button--play"
         @click="paused = !paused"
       >
-        <PlayIcon size="48" />
+        Play
       </button>
       <button
         v-else
@@ -16,7 +16,7 @@
         class="timer__button timer__button--pause"
         @click="paused = !paused"
       >
-        <PauseIcon size="48" />
+        Pause
       </button>
     </div>
     <div>
@@ -26,23 +26,15 @@
         class="timer__button timer__button--reset"
         @click="resetTimer"
       >
-        <RotateCcwIcon size="24" />
+        Reset
       </button>
     </div>
   </div>
 </template>
 
 <script>
-import { PauseIcon, PlayIcon, RotateCcwIcon } from 'vue-feather-icons'
-
 export default {
   name: 'Timer',
-  components: {
-    PauseIcon,
-    PlayIcon,
-    RotateCcwIcon
-  },
-
   props: {
     limit: {
       type: Number,
@@ -112,7 +104,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '~@/styles/_colors.scss';
+@import '@/styles/_colors.scss';
 
 .clock {
   font-size: 3rem;

@@ -24,10 +24,10 @@
 </template>
 
 <script>
-import BaseVideo from '@/components/BaseVideo'
-import Settings from '@/components/Settings'
-import TimerOptions from '@/components/TimerOptions'
-import Timer from '@/components/Timer'
+import BaseVideo from '@/components/BaseVideo.vue'
+import Settings from '@/components/Settings.vue'
+import TimerOptions from '@/components/TimerOptions.vue'
+import Timer from '@/components/Timer.vue'
 
 export default {
   name: 'App',
@@ -82,7 +82,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~@/styles/main.scss';
+@import '@/styles/main.scss';
 
 #app {
   background-attachment: fixed;
