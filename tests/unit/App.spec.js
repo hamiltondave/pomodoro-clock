@@ -21,7 +21,7 @@ test('sets image background', () => {
 })
 
 test('sets video background', async () => {
-  jest.spyOn(window.HTMLMediaElement.prototype, 'play').mockImplementation(() => {})
+  vi.spyOn(window.HTMLMediaElement.prototype, 'play').mockImplementation(() => {})
   window.URL = {
     createObjectURL: () => 'test-file-url'
   }

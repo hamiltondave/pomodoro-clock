@@ -9,13 +9,12 @@ beforeEach(() => {
       limit: 5,
     },
   })
-  jest.useFakeTimers()
+  vi.useFakeTimers()
 })
 
-// Running all pending timers and switching to real timers using Jest
 afterEach(() => {
-  jest.runOnlyPendingTimers()
-  jest.useRealTimers()
+  vi.runOnlyPendingTimers()
+  vi.useRealTimers()
 })
 
 test('renders time remaining', () => {
@@ -33,7 +32,7 @@ test('starts timer on clicking play button', async () => {
   await playButton.trigger('click')
   const pauseButton = wrapper.find('button[aria-label="pause"]')
   expect(pauseButton.exists()).toBe(true)
-  await jest.advanceTimersByTime(1000)
+  await vi.advanceTimersByTime(1000)
   expect(wrapper.text()).toContain('4:59')
 })
 
@@ -49,7 +48,7 @@ test('resets timer on clicking reset button', async () => {
   expect(wrapper.text()).toContain('5:00')
   const playButton = wrapper.find('button[aria-label="play"]')
   await playButton.trigger('click')
-  await jest.advanceTimersByTime(1000)
+  await vi.advanceTimersByTime(1000)
   expect(wrapper.text()).toContain('4:59')
   const resetButton = wrapper.find('[data-test-id="reset-button"]')
   await resetButton.trigger('click')
@@ -60,7 +59,7 @@ test('resets timer on limit change', async () => {
   expect(wrapper.text()).toContain('5:00')
   const playButton = wrapper.find('button[aria-label="play"]')
   await playButton.trigger('click')
-  await jest.advanceTimersByTime(1000)
+  await vi.advanceTimersByTime(1000)
   expect(wrapper.text()).toContain('4:59')
   await wrapper.setProps({ limit: 10 })
   expect(wrapper.text()).toContain('10:00')
@@ -70,7 +69,7 @@ test('ends timer at 0', async () => {
   expect(wrapper.text()).toContain('5:00')
   let playButton = wrapper.find('button[aria-label="play"]')
   await playButton.trigger('click')
-  await jest.advanceTimersByTime(300000)
+  await vi.advanceTimersByTime(300000)
   await playButton.trigger('click')
   expect(wrapper.text()).toContain('0:00')
   playButton = wrapper.find('button[aria-label="play"]')
