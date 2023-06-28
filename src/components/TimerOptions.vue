@@ -11,7 +11,7 @@
         :value="option.value"
         class="timer__input"
         v-model="selectedOption"
-        @input="$emit('input', $event.target.value)"
+        @input="$emit('update:modelValue', $event.target.value)"
       />
       {{ option.label }}
     </label>
