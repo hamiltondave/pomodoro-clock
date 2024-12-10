@@ -46,7 +46,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '@/styles/_colors.scss';
+@use '@/styles/_colors.scss' as *;
 
 .fieldset {
   background-color: transparent;

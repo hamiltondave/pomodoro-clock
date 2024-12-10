@@ -104,7 +104,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '@/styles/_colors.scss';
+@use '@/styles/_colors.scss' as *;
 
 .clock {
   font-size: 3rem;

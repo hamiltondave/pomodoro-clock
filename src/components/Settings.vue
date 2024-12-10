@@ -49,8 +49,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '@/styles/_variables.scss';
-
 .settings {
   display: block;
   margin-top: 1rem;

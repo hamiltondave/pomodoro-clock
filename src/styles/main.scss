@@ -1,4 +1,4 @@
-@import './_variables.scss';
+@use './_colors.scss' as *;
 
 html {
   font-family: Avenir, Helvetica, Arial, sans-serif;

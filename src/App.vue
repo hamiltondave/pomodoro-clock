@@ -82,7 +82,8 @@ export default {
 </script>
 
 <style lang="scss">
-@import '@/styles/main.scss';
+@use '@/styles/colors.scss' as *;
+@use '@/styles/main.scss' as *;
 
 #app {
   background-attachment: fixed;
